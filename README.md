@@ -1,11 +1,12 @@
-# Simple to-do list
-
-- Approx. completion time: **1 hour**
-- Deliverables: **1 HTML file, 1 CSS file, 1 JS file**
-
+---
+summary: 'Use Javascript & jQuery to make a simple to-do list.'
+time: '1 hour'
+deliverables: '1 HTML file, 1 CSS file, 1 JS file'
 ---
 
-**Use Javascript & jQuery to make a simple to-do list.**
+# Simple to-do list
+
+## Overview
 
 - *Fork this repository.*
 - Make a form with a text input and a submit button.
@@ -25,4 +26,4 @@ Create the interaction shown in the linked video.
 
 ## Hand in
 
-Drop this folder into your Markbot application. Make sure to fix all the errors. And submit to Canvas using Markbot.
+Drop this folder into your Markbot application. Make sure to fix all the errors. And submit online.

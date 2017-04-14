@@ -1,30 +1,34 @@
 repo: "simple-to-do-list"
-canvasCourse: "467503"
-canvasAssignment: "4202569"
 
 naming: true
-commits: 2
+restrictFileTypes: true
+liveWebsite: true
+
+git:
+  numCommits: 2
+  allCommitted: true
+  allSynced: true
 
 html:
   - path: "index.html"
     valid: true
     bestPractices: true
     has:
-      - "script"
+      - 'script[src*="jquery"]'
+      - 'script[src="js/main.js"]'
       - "form"
       - "form label[for]"
       - "form input"
       - 'form button[type="submit"]'
       - 'ul'
-    search:
-      - "jquery"
 
 css:
   - path: "css/main.css"
     valid: true
     bestPractices: true
     has:
-      - ['html', 'box-sizing', 'border-box']
+      - ['html', 'box-sizing', 'border-box', 'The `border-box` layout model is needed for this assignment—use the `borderbox` snippet']
+      - ['*', 'box-sizing', 'inherit', 'The `border-box` layout model is needed for this assignment—use the `borderbox` snippet']
     search:
       - "line-through"
 
@@ -43,3 +47,31 @@ js:
       - "\\.append\\("
       - "\\.val\\("
       - "\\.val\\(''\\)"
+
+
+functionality:
+  - path: "index.html"
+    tests:
+      - |
+        let ul = $('ul');
+        let input = $('input');
+        let form = $('form');
+
+        if (ul.innerHTML.trim() != '') fail('The <ul> should be empty');
+
+        input.value = 'Books';
+        form.dispatchEvent(ev('submit'));
+
+        if ($('li:last-child').innerHTML != 'Books') fail('The new to-do doesn’t match what was written in the <input>');
+
+        pass();
+      - |
+        let li = $('li:first-child');
+        li.dispatchEvent(ev('click'));
+
+        if (css(li).textDecoration != 'line-through') fail('The to-do item doesn’t get a line-through when clicked');
+
+        li.dispatchEvent(ev('click'));
+        if (css(li).textDecoration == 'line-through') fail('The to-do item’s line-through isn’t removed when clicking a second time');
+
+        pass();
